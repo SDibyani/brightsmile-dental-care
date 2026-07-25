@@ -48,11 +48,35 @@ export function useBookingForm() {
     }
   }, [formData.date]);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+
+
+
+
+const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+) => {
+  const { name, value } = e.target;
+
+  
+  if (name === "name") {
+    const lettersOnly = value.replace(/[^a-zA-Z\s'-]/g, "");
+    setFormData((prev) => ({ ...prev, [name]: lettersOnly }));
+    return;
+  }
+
+ 
+  if (name === "phone") {
+    const digitsOnly = value.replace(/\D/g, "");
+    setFormData((prev) => ({ ...prev, [name]: digitsOnly }));
+    return;
+  }
+
+ 
+  setFormData((prev) => ({ ...prev, [name]: value }));
+};
+
+
+
 
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedDate = e.target.value;

@@ -1,8 +1,14 @@
+
+
+
+
+
 "use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Play, CheckCircle2, X } from "lucide-react";
 import { WHY_CHOOSE_US_DATA } from "@/data/whyChooseUs";
 
@@ -12,8 +18,14 @@ export default function WhyChooseUs() {
   return (
     <section className="bg-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden text-slate-800">
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        {/* Section Header: Comes from Top */}
+        <motion.div
+          initial={{ opacity: 0, y: -40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
+        >
           <p className="text-xs sm:text-sm font-semibold tracking-[0.25em] text-slate-500 uppercase">
             {WHY_CHOOSE_US_DATA.subtitle}
           </p>
@@ -23,17 +35,22 @@ export default function WhyChooseUs() {
               {WHY_CHOOSE_US_DATA.titleHighlight}
             </span>
           </h2>
-        </div>
+        </motion.div>
 
-      
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-    
-          <div className="lg:col-span-5 flex justify-center relative">
+          {/* LEFT COLUMN: Image & Play Button - Comes from Left */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="lg:col-span-5 flex justify-center relative"
+          >
             <div className="relative w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] lg:w-[400px] lg:h-[400px]">
-       
+              {/* Outer Decorative Ring */}
               <div className="absolute -inset-4 sm:-inset-6 rounded-full border-2 border-slate-200/80 pointer-events-none" />
 
-          
+              {/* Main Image Frame */}
               <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl border-4 border-white">
                 <Image
                   src={WHY_CHOOSE_US_DATA.image}
@@ -43,7 +60,7 @@ export default function WhyChooseUs() {
                   priority
                 />
 
-              
+                {/* Play Button Overlay */}
                 <button
                   onClick={() => setIsVideoOpen(true)}
                   aria-label="Play video"
@@ -55,7 +72,7 @@ export default function WhyChooseUs() {
                 </button>
               </div>
 
-       
+              {/* Decorative SVGs */}
               <div className="absolute -bottom-6 -left-6 sm:-bottom-8 sm:-left-8 text-blue-600 pointer-events-none">
                 <svg
                   className="w-16 h-16 sm:w-20 sm:h-20"
@@ -75,7 +92,6 @@ export default function WhyChooseUs() {
                 </svg>
               </div>
 
-        
               <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-20 h-20 text-blue-600/80 pointer-events-none rotate-12">
                 <svg viewBox="0 0 100 100" fill="currentColor">
                   <circle cx="20" cy="20" r="4" />
@@ -89,15 +105,21 @@ export default function WhyChooseUs() {
                 </svg>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-         
-          <div className="lg:col-span-7 space-y-8">
+          {/* RIGHT COLUMN: Content Block - Comes from Right */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+            className="lg:col-span-7 space-y-8"
+          >
             <p className="text-slate-500 text-sm sm:text-base leading-relaxed">
               {WHY_CHOOSE_US_DATA.description}
             </p>
 
-         
+            {/* Stats Block */}
             <div className="grid grid-cols-3 gap-2 sm:gap-6 pt-4 pb-6 border-y border-slate-100">
               {WHY_CHOOSE_US_DATA.stats.map((stat, idx) => (
                 <div
@@ -118,7 +140,7 @@ export default function WhyChooseUs() {
               ))}
             </div>
 
-           
+            {/* Features List */}
             <ul className="space-y-3">
               {WHY_CHOOSE_US_DATA.features.map((feature, idx) => (
                 <li key={idx} className="flex items-center gap-3">
@@ -130,7 +152,7 @@ export default function WhyChooseUs() {
               ))}
             </ul>
 
-         
+            {/* CTA Button */}
             <div className="pt-2">
               <Link
                 href={WHY_CHOOSE_US_DATA.buttonHref}
@@ -139,11 +161,11 @@ export default function WhyChooseUs() {
                 {WHY_CHOOSE_US_DATA.buttonText}
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
-  
+      {/* Video Modal */}
       {isVideoOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
           <div className="relative w-full max-w-3xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl">
