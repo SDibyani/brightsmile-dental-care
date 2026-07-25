@@ -4,11 +4,10 @@ A modern, fully responsive dental clinic website built with **Next.js** and **Ta
 
 ##  Live Demo
 
-**Live Website:**[ https://your-vercel-link.vercel.app](https://brightsmile-dental-care-48hm2hv4s-sdibyanis-projects.vercel.app/)
+**Live Website:**(https://brightsmile-dental-care-48hm2hv4s-sdibyanis-projects.vercel.app/)
 
 ##  GitHub Repository
-
-https://github.com/yourusername/brightsmile-dental-care
+(https://github.com/SDibyani/brightsmile-dental-care)
 
 ---
 
